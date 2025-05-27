@@ -1,22 +1,47 @@
 # Personal Project Memory
 
-@~/claude-workspace/memories/base/interaction-style.md
-@~/claude-workspace/memories/base/core-principles.md
-@~/claude-workspace/memories/base/code-standards.md
-@~/claude-workspace/memories/base/version-control.md
-@~/claude-workspace/memories/workflows/tdd.md
-@~/claude-workspace/memories/project-types/personal.md
+@../../.claude/memories/base/interaction-style.md
+@../../.claude/memories/base/core-principles.md
+@../../.claude/memories/base/code-standards.md
+@../../.claude/memories/base/version-control.md
+@../../.claude/memories/workflows/tdd.md
+@../../.claude/memories/workflows/llm-driven-development.md
+@../../.claude/memories/project-types/personal.md
 
-## Project-Specific Context
-[Replace with specific project details]
+## Project Overview
+
+[Describe what this personal project does - productivity tool, finance app, etc.]
 
 ## Current Focus
-[What you're working on right now]
+
+[What you're currently working on in this project]
+
+## Implementation Status
+
+[Current development status and next steps]
+
+## Build/Test Commands
+
+```bash
+npm run dev
+npm test
+npm run build
+npm run lint
+```
+
+## Technology Stack
+
+- **Frontend**: React, Next.js, TypeScript
+- **Backend**: Node.js, PostgreSQL, Prisma
+- **Testing**: Jest, React Testing Library
+- **Styling**: TailwindCSS
 
 ## Key Files
-[Important files and their purposes]
+
+- [List important files and their purposes]
 
 ## Common Commands
+
 ```bash
 # Package management
 npm install
@@ -32,4 +57,7 @@ npm run test:coverage
 ```
 
 ## Recent Decisions
-[Date]: [Decision and rationale]
+
+[Date]: [Important decision and rationale]
+
+[See ../../.claude/memories/ for universal development standards]

@@ -1,11 +1,11 @@
 # Claude Workspace Project Memory
 
-@~/claude-workspace/memories/base/interaction-style.md
-@~/claude-workspace/memories/base/core-principles.md
-@~/claude-workspace/memories/base/code-standards.md
-@~/claude-workspace/memories/base/version-control.md
-@~/claude-workspace/memories/workflows/tdd.md
-@~/claude-workspace/memories/workflows/llm-driven-development.md
+@./memories/base/interaction-style.md
+@./memories/base/core-principles.md
+@./memories/base/code-standards.md
+@./memories/base/version-control.md
+@./memories/workflows/tdd.md
+@./memories/workflows/llm-driven-development.md
 
 ## Project-Specific Context
 

@@ -4,279 +4,391 @@ A modular, version-controlled system for managing Claude Code configurations acr
 
 ## Overview
 
-This repository consolidates Claude Code memory files and settings into a reusable, modular system that enables systematic optimization across an entire development workflow.
+This repository provides a complete, self-contained modular memory system for Claude Code that follows Claude's recursive memory discovery pattern. Deploy it once to your project workspace, and all projects automatically inherit consistent development standards while maintaining their own specific context.
 
 ## Key Features
 
+- **Self-Contained Deployment**: Deploy once to your workspace root, works everywhere
 - **Modular Memory System**: Reusable memory modules for interaction style, development principles, and workflows
-- **Project-Type Templates**: Specialized configurations for different types of projects (experiments, personal, work, healthcare)
-- **LLM-Driven Development**: Incorporates modern LLM-driven development principles and patterns
-- **Automatic Propagation**: Changes to base modules instantly benefit all projects using the system
-- **Safe Migration**: Complete backup and restoration tools for existing configurations
+- **Correct Claude Discovery**: Follows Claude Code's actual recursive memory discovery mechanism
+- **Project-Type Templates**: Specialized configurations for different types of projects
+- **LLM-Driven Development**: Incorporates modern LLM-driven development principles
+- **No Runtime Dependencies**: Complete standalone system after deployment
 
 ## Architecture
 
 ```
-claude-workspace/
-├── memories/
-│   ├── base/            # Universal standards (interaction style, core principles)
-│   ├── project-types/   # Context for different project types
-│   └── workflows/       # Development workflows (TDD, LLM-driven)
-├── templates/           # Ready-to-use CLAUDE.md templates
-├── settings/            # Claude Code settings templates
-├── tools/              # Migration and optimization scripts
-└── backup/             # Preserved original configurations
+your-projects/
+├── .claude/                    # Deployed claude-workspace (self-contained)
+│   ├── CLAUDE.md              # Root memory with modular imports
+│   ├── memories/
+│   │   ├── base/              # Universal standards
+│   │   ├── project-types/     # Context for different project types
+│   │   └── workflows/         # Development workflows
+│   ├── settings/              # Claude Code settings templates
+│   ├── tools/                 # Migration and setup scripts
+│   └── templates/             # Template files for reference
+├── personal/
+│   ├── CLAUDE.md              # Category-level memory
+│   └── my-app/
+│       └── CLAUDE.md          # Project-specific memory
+├── experiments/
+│   ├── CLAUDE.md              # Category-level memory
+│   └── ai-project/
+│       └── CLAUDE.md          # Project-specific memory
+└── work/
+    ├── CLAUDE.md              # Category-level memory
+    └── client-project/
+        └── CLAUDE.md          # Project-specific memory
 ```
 
 ## Quick Start
 
-### 1. Clone and Setup
+### 1. Clone and Deploy
+
 ```bash
+# Clone the workspace
 git clone https://github.com/your-username/claude-workspace.git
-cd claude-workspace
+
+# Deploy to your projects root (creates self-contained system)
+cd your-projects-directory
+cp -r claude-workspace/./ .claude/
+
+# Clean up the source (no longer needed)
+rm -rf claude-workspace
 ```
 
-### 2. Apply to New Project
+### 2. Create Category-Level Memories
+
 ```bash
-# Copy appropriate template
-cp templates/CLAUDE-experiments.md /path/to/your-project/CLAUDE.md
+# Create category memories that import from .claude
+cat > personal/CLAUDE.md << 'EOF'
+# Personal Projects Memory
 
-# Customize project-specific sections
-# The universal standards are automatically imported
+@../.claude/memories/base/interaction-style.md
+@../.claude/memories/base/core-principles.md
+@../.claude/memories/workflows/tdd.md
+@../.claude/memories/project-types/personal.md
+
+## Personal Project Context
+These are productivity and personal tools, typically full-stack applications.
+EOF
 ```
 
-### 3. Optimize Across Projects
+### 3. Create Project-Level Memories
+
 ```bash
-# Enhance a base module
-edit memories/workflows/tdd.md
+# Create project-specific memory
+cat > personal/my-app/CLAUDE.md << 'EOF'
+# My App Project Memory
 
-# Commit the change
-git commit -m "Enhance TDD workflow with new requirement"
+@../../.claude/memories/base/interaction-style.md
+@../../.claude/memories/base/core-principles.md
+@../../.claude/memories/workflows/tdd.md
+@../../.claude/memories/project-types/personal.md
 
-# All projects using this module automatically inherit the enhancement
+## Project Overview
+This app does X, Y, and Z...
+
+## Current Focus
+Working on feature ABC...
+EOF
 ```
 
-## Memory Modules
+### 4. Test Memory Discovery
 
-- **interaction-style.md**: Personal interaction preferences and collaboration model
-- **core-principles.md**: Universal development principles (TDD, modular architecture, quality gates)
-- **tdd.md**: Test-driven development workflow with quality enforcement
-- **llm-driven-development.md**: Modern LLM-driven development practices
-
-## Project Types
-
-- **experiments**: AI agent frameworks and research projects
-- **personal**: Full-stack applications and productivity tools  
-- **work**: Enterprise applications with compliance requirements
-- **healthcare-analytics**: HIPAA-compliant healthcare data projects
-
-## Tools
-
-- **migrate-all-projects.sh**: Apply modular system to existing projects
-- **restore-all-project-content.sh**: Restore project-specific content from backups
-- **extract-project-content.sh**: Analyze existing configurations for patterns
-
-## Safety Features
-
-- Complete backup system before any changes
-- Version control for all configurations
-- Rollback capabilities for individual projects
-- Incremental migration approach
-
-## Benefits
-
-- **Consistency**: Same standards across all projects
-- **Maintainability**: Update once, apply everywhere
-- **Evolution**: Track and optimize development practices over time
-- **Scalability**: Easy to add new project types and standards
-
-## How Claude Code Memory Works
-
-### Memory Discovery and Loading
-
-Claude Code automatically discovers memory files using a recursive directory traversal system:
-
-1. **Project Memory**: Looks for `CLAUDE.md` files starting from current working directory up to root
-2. **User Memory**: Loads `~/.claude/CLAUDE.md` for personal preferences across all projects
-3. **Import System**: Uses `@path/to/import` syntax to include additional memory files
-4. **Recursive Imports**: Supports up to 5 levels of nested imports for modular composition
-
-```markdown
-# Example project CLAUDE.md with imports
-@~/claude-workspace/memories/base/interaction-style.md
-@~/claude-workspace/memories/workflows/tdd.md
-@~/claude-workspace/memories/project-types/experiments.md
-
-## Project-Specific Context
-[Your custom content here]
-```
-
-When Claude Code starts, it automatically:
-1. Finds your project's `CLAUDE.md`
-2. Follows all `@` import links
-3. Loads content from imported files
-4. Combines everything into Claude's working memory
-
-### Memory Verification
-
-Use the `/memory` command in Claude Code to see which memory files are loaded:
 ```bash
-cd your-project
+cd personal/my-app
 claude
 # In Claude session:
 /memory
+# Should show all imported memories
+```
+
+## How Claude Code Memory Actually Works
+
+### Memory Discovery Pattern
+
+Claude Code uses **recursive directory discovery** starting from your current working directory:
+
+1. **Project Level**: Looks for `CLAUDE.md` in current directory
+2. **Parent Directories**: Recursively searches up to root (`/`)
+3. **User Level**: Loads `~/.claude/CLAUDE.md` for personal preferences
+
+**Key Insight**: Claude looks for `CLAUDE.md` files **directly in directories**, not inside `.claude` subdirectories, with one exception: `~/.claude/CLAUDE.md` for user-level settings.
+
+### Our Pattern
+
+We leverage this by placing a `.claude/CLAUDE.md` file at your workspace root, which Claude discovers when working in any subdirectory project. This provides the universal base memory that all projects inherit.
+
+```bash
+# When working in personal/my-app/, Claude finds:
+personal/my-app/CLAUDE.md           # Project-specific
+personal/CLAUDE.md                  # Category-level  
+.claude/CLAUDE.md                   # Universal base (via ../../.claude/CLAUDE.md)
+```
+
+## Memory Module Structure
+
+### Base Memories (Universal)
+- **interaction-style.md**: Personal interaction preferences and collaboration model
+- **core-principles.md**: Universal development principles (TDD, modular architecture)
+- **code-standards.md**: Coding standards and conventions
+- **version-control.md**: Git workflow and commit standards
+
+### Workflow Memories
+- **tdd.md**: Test-driven development workflow with quality gates
+- **llm-driven-development.md**: Modern LLM-driven development practices
+
+### Project Type Memories
+- **experiments.md**: AI agent frameworks and research projects
+- **personal.md**: Full-stack applications and productivity tools  
+- **work.md**: Enterprise applications with compliance requirements
+- **healthcare-analytics.md**: HIPAA-compliant healthcare data projects
+
+## Import Path Patterns
+
+Based on your project depth, use the correct relative path:
+
+```bash
+# From project root (depth 1): your-projects/my-project/
+@./.claude/memories/base/interaction-style.md
+
+# From category/project (depth 2): your-projects/personal/my-app/
+@../../.claude/memories/base/interaction-style.md
+
+# From nested project (depth 3): your-projects/work/client/sub-project/
+@../../../.claude/memories/base/interaction-style.md
+```
+
+## Project Templates
+
+### Minimal Project Memory
+```markdown
+# Project Name
+
+@../../.claude/memories/base/interaction-style.md
+@../../.claude/memories/base/core-principles.md
+@../../.claude/memories/workflows/tdd.md
+@../../.claude/memories/project-types/personal.md
+
+## Project Overview
+[What this project does]
+
+## Current Focus
+[What you're working on now]
+
+## Key Files
+- [Important files and their purposes]
+```
+
+### Comprehensive Project Memory
+```markdown
+# Project Name
+
+@../../.claude/memories/base/interaction-style.md
+@../../.claude/memories/base/core-principles.md
+@../../.claude/memories/base/code-standards.md
+@../../.claude/memories/base/version-control.md
+@../../.claude/memories/workflows/tdd.md
+@../../.claude/memories/workflows/llm-driven-development.md
+@../../.claude/memories/project-types/experiments.md
+
+## Project Overview
+[Detailed project description]
+
+## Implementation Status
+[Current status and timeline]
+
+## Architecture
+[Key architectural decisions]
+
+## Build/Test Commands
+```bash
+npm run dev
+npm test
+```
+
+## Technology Stack
+- [Technologies used]
+
+## Resources
+- [Links to important documentation]
+```
+
+## Category-Level Memories
+
+Create category memories to provide context for groups of related projects:
+
+### Personal Projects
+```markdown
+# Personal Projects Memory
+
+@../.claude/memories/base/interaction-style.md
+@../.claude/memories/workflows/tdd.md
+@../.claude/memories/project-types/personal.md
+
+## Personal Project Context
+These are productivity and personal finance tools, typically full-stack JavaScript/TypeScript applications.
+
+## Common Technologies
+- Frontend: React, Next.js, TypeScript
+- Backend: Node.js, PostgreSQL, Prisma
+- Testing: Jest, React Testing Library
+```
+
+### Work Projects
+```markdown
+# Work Projects Memory
+
+@../.claude/memories/base/interaction-style.md
+@../.claude/memories/workflows/tdd.md
+@../.claude/memories/project-types/work.md
+
+## Work Project Context
+Professional applications with compliance focus and enterprise requirements.
+
+## Compliance Requirements
+- Security-first development
+- Audit trails and logging
+- Data privacy protection
+```
+
+## Deployment Tools
+
+The `tools/` directory contains scripts to help with deployment:
+
+### Setup Script
+```bash
+# tools/setup-workspace.sh
+#!/bin/bash
+# Deploys claude-workspace to target directory
+TARGET_DIR=${1:-".claude"}
+cp -r memories/ settings/ tools/ CLAUDE.md "$TARGET_DIR/"
+echo "Claude workspace deployed to $TARGET_DIR"
+```
+
+### Migration Script
+```bash
+# tools/migrate-projects.sh
+#!/bin/bash
+# Helps migrate existing projects to use the new system
+find . -name "CLAUDE.md" -exec cp {} {}.backup \;
+# Additional migration logic...
 ```
 
 ## Best Practices
 
 ### Memory Organization
 
-**Keep memories small and focused:**
-- ✅ `interaction-style.md` - How to address you and communicate
-- ✅ `tdd.md` - Specific workflow for test-driven development
-- ❌ `everything.md` - Massive file with all project info
+**Keep memories focused and specific:**
+- ✅ Small, single-purpose modules
+- ✅ Clear import paths
+- ✅ Project-specific content in project files
+- ❌ Massive monolithic memory files
 
-**Use conditional imports strategically:**
+### Import Strategy
+
+**Layer your imports strategically:**
 ```markdown
-# Only import what's relevant for the project type
-@~/claude-workspace/memories/base/core-principles.md
-@~/claude-workspace/memories/project-types/experiments.md  # Python AI projects
-@~/claude-workspace/memories/workflows/tdd.md
+# Always include these basics
+@../../.claude/memories/base/interaction-style.md
+@../../.claude/memories/base/core-principles.md
+
+# Add workflow-specific memories
+@../../.claude/memories/workflows/tdd.md
+
+# Include project-type specific context
+@../../.claude/memories/project-types/experiments.md
 ```
 
-### Granular Rules (LLM-Driven Development)
+### Project Customization
 
-Following modern LLM development practices:
+**Structure project-specific content:**
+- Overview and current focus
+- Key files and their purposes
+- Build/test commands
+- Technology stack
+- Recent decisions and rationale
 
-**Write ticket-sized memory modules:**
-```markdown
-# ✅ Good: Focused rule
-# TDD Workflow
-- Write tests before implementation
-- Ensure >80% test coverage
-- Run linting before commits
+## Validation
 
-# ❌ Bad: Overly broad rule  
-# Development Process
-- TDD, architecture, deployment, testing, documentation...
-```
-
-**Use the LLM to generate consistent memories:**
+### Test Memory Loading
 ```bash
-# Let Claude help create new memory modules
-claude "Generate a memory module for API design standards based on our existing patterns"
+cd your-project
+claude
+/memory  # Shows all loaded memories
 ```
 
-### Project-Specific Customization
-
-**Structure your project CLAUDE.md files:**
-```markdown
-# Universal imports (same across similar projects)
-@~/claude-workspace/memories/base/interaction-style.md
-@~/claude-workspace/memories/workflows/tdd.md
-
-# Project-type specific
-@~/claude-workspace/memories/project-types/experiments.md
-
-## Project-Specific Context
-**Purpose:** [What this specific project does]
-**Current Focus:** [What you're working on right now]
-
-## Key Files
-- [List important files and their purposes]
-
-## Common Commands
+### Verify Imports
 ```bash
-# Project-specific setup and workflows
+# Check that relative paths resolve correctly
+ls ../../.claude/memories/base/interaction-style.md
 ```
 
-## Recent Decisions
-[Date]: [Decision and rationale]
-```
+### Validate Coverage
+- Each project should import base interaction style
+- Workflow memories should match project type
+- Project-specific content should be preserved
 
-### Settings Management
+## Migration from Existing Systems
 
-**Organize settings by project type:**
-- `settings/python-project.json` - Python development tools
-- `settings/javascript-project.json` - JS/TS development tools
-- `settings/healthcare-analytics.json` - HIPAA-compliant project settings
-
-**Use appropriate permissions:**
-```json
-{
-  "permissions": {
-    "allow": [
-      "Bash(pytest:*)",
-      "Bash(black:*)", 
-      "Bash(mypy:*)",
-      "WebFetch(domain:docs.python.org)"
-    ]
-  }
-}
-```
-
-### Quality Gates
-
-**Validate memory effectiveness:**
-- Test new memory modules with real projects
-- Ask Claude to verify understanding: "What are our development principles?"
-- Use `/memory` command to confirm imports are loading
-- A/B test different memory configurations for effectiveness
-
-## Usage Example
-
-When you enhance the TDD workflow:
+### 1. Backup Current Configuration
 ```bash
-# 1. Edit base module
-edit memories/workflows/tdd.md
-# Add: "Run security scans before deployment"
-
-# 2. Commit change
-git commit -m "Add security scan requirement to TDD workflow"
-
-# 3. All projects automatically inherit this enhancement
-# Next time Claude Code runs in any project, it includes the new requirement
+cp -r ~/.claude ~/.claude.backup
+find your-projects -name "CLAUDE.md" -exec cp {} {}.backup \;
 ```
+
+### 2. Deploy New System
+```bash
+cd your-projects
+git clone https://github.com/your-username/claude-workspace.git
+cp -r claude-workspace/./ .claude/
+rm -rf claude-workspace
+```
+
+### 3. Migrate Projects Gradually
+Start with one project, validate it works, then apply to others:
+```bash
+# Test with one project first
+cd personal/test-project
+# Create CLAUDE.md with imports
+# Test with /memory command
+# Apply to other projects once validated
+```
+
+## Troubleshooting
+
+### Memory Not Loading
+- Check relative path depths (`../../` vs `../../../`)
+- Verify files exist at import paths
+- Use `/memory` command to see what's loaded
+
+### Import Errors
+- Ensure no spaces around `@` symbol
+- Check file paths are exactly correct
+- Verify target files have proper content
+
+### Missing Context
+- Check that category-level memories exist
+- Verify project-type imports are included
+- Ensure project-specific content is preserved
 
 ## Claude Code Documentation
 
-This system leverages official Claude Code features. For detailed information:
+This system follows official Claude Code patterns:
 
-- **Memory Management**: [Claude Code Memory Guide](https://docs.anthropic.com/en/docs/claude-code/memory)
-- **Settings Configuration**: [Claude Code Settings](https://docs.anthropic.com/en/docs/claude-code/settings)
+- **Memory Discovery**: [Claude Code Memory Guide](https://docs.anthropic.com/en/docs/claude-code/memory)
+- **Settings**: [Claude Code Settings](https://docs.anthropic.com/en/docs/claude-code/settings)
 - **CLI Usage**: [Claude Code CLI Guide](https://docs.anthropic.com/en/docs/claude-code/cli-usage)
-- **Security & Permissions**: [Claude Code Security](https://docs.anthropic.com/en/docs/claude-code/security)
-
-### Key Claude Code Features Used
-
-1. **Recursive Memory Discovery**: Automatic discovery of `CLAUDE.md` files from current directory up to root
-2. **Import System**: `@path/to/import` syntax for modular memory composition (max 5 hops)
-3. **Settings Hierarchy**: Project → User → Global settings precedence
-4. **Memory Commands**: `/memory` to view loaded memories, `/config` for settings management
-
-## Migration Strategy
-
-### For Existing Projects
-
-1. **Backup first**: Use `tools/extract-project-content.sh` to preserve existing content
-2. **Start small**: Apply to 1-2 projects initially to validate approach
-3. **Iterate**: Refine memory modules based on real usage
-4. **Scale gradually**: Apply to more projects as you validate effectiveness
-
-### For New Projects
-
-1. **Choose template**: Select appropriate template from `templates/`
-2. **Customize**: Edit project-specific sections
-3. **Test imports**: Use `/memory` command to verify loading
-4. **Evolve**: Update base modules as you discover better practices
 
 ## Contributing
 
 1. Test changes in isolated projects first
-2. Document rationale for modifications  
+2. Document rationale for memory module changes
 3. Use conventional commit messages
-4. Validate effectiveness before wide application
-5. Follow LLM-driven development principles (granular, ticket-sized changes)
+4. Validate effectiveness across different project types
+5. Follow LLM-driven development principles
 
 ## License
 
