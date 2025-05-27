@@ -90,6 +90,139 @@ git commit -m "Enhance TDD workflow with new requirement"
 - **Evolution**: Track and optimize development practices over time
 - **Scalability**: Easy to add new project types and standards
 
+## How Claude Code Memory Works
+
+### Memory Discovery and Loading
+
+Claude Code automatically discovers memory files using a recursive directory traversal system:
+
+1. **Project Memory**: Looks for `CLAUDE.md` files starting from current working directory up to root
+2. **User Memory**: Loads `~/.claude/CLAUDE.md` for personal preferences across all projects
+3. **Import System**: Uses `@path/to/import` syntax to include additional memory files
+4. **Recursive Imports**: Supports up to 5 levels of nested imports for modular composition
+
+```markdown
+# Example project CLAUDE.md with imports
+@~/claude-workspace/memories/base/interaction-style.md
+@~/claude-workspace/memories/workflows/tdd.md
+@~/claude-workspace/memories/project-types/experiments.md
+
+## Project-Specific Context
+[Your custom content here]
+```
+
+When Claude Code starts, it automatically:
+1. Finds your project's `CLAUDE.md`
+2. Follows all `@` import links
+3. Loads content from imported files
+4. Combines everything into Claude's working memory
+
+### Memory Verification
+
+Use the `/memory` command in Claude Code to see which memory files are loaded:
+```bash
+cd your-project
+claude
+# In Claude session:
+/memory
+```
+
+## Best Practices
+
+### Memory Organization
+
+**Keep memories small and focused:**
+- ✅ `interaction-style.md` - How to address you and communicate
+- ✅ `tdd.md` - Specific workflow for test-driven development
+- ❌ `everything.md` - Massive file with all project info
+
+**Use conditional imports strategically:**
+```markdown
+# Only import what's relevant for the project type
+@~/claude-workspace/memories/base/core-principles.md
+@~/claude-workspace/memories/project-types/experiments.md  # Python AI projects
+@~/claude-workspace/memories/workflows/tdd.md
+```
+
+### Granular Rules (LLM-Driven Development)
+
+Following modern LLM development practices:
+
+**Write ticket-sized memory modules:**
+```markdown
+# ✅ Good: Focused rule
+# TDD Workflow
+- Write tests before implementation
+- Ensure >80% test coverage
+- Run linting before commits
+
+# ❌ Bad: Overly broad rule  
+# Development Process
+- TDD, architecture, deployment, testing, documentation...
+```
+
+**Use the LLM to generate consistent memories:**
+```bash
+# Let Claude help create new memory modules
+claude "Generate a memory module for API design standards based on our existing patterns"
+```
+
+### Project-Specific Customization
+
+**Structure your project CLAUDE.md files:**
+```markdown
+# Universal imports (same across similar projects)
+@~/claude-workspace/memories/base/interaction-style.md
+@~/claude-workspace/memories/workflows/tdd.md
+
+# Project-type specific
+@~/claude-workspace/memories/project-types/experiments.md
+
+## Project-Specific Context
+**Purpose:** [What this specific project does]
+**Current Focus:** [What you're working on right now]
+
+## Key Files
+- [List important files and their purposes]
+
+## Common Commands
+```bash
+# Project-specific setup and workflows
+```
+
+## Recent Decisions
+[Date]: [Decision and rationale]
+```
+
+### Settings Management
+
+**Organize settings by project type:**
+- `settings/python-project.json` - Python development tools
+- `settings/javascript-project.json` - JS/TS development tools
+- `settings/healthcare-analytics.json` - HIPAA-compliant project settings
+
+**Use appropriate permissions:**
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(pytest:*)",
+      "Bash(black:*)", 
+      "Bash(mypy:*)",
+      "WebFetch(domain:docs.python.org)"
+    ]
+  }
+}
+```
+
+### Quality Gates
+
+**Validate memory effectiveness:**
+- Test new memory modules with real projects
+- Ask Claude to verify understanding: "What are our development principles?"
+- Use `/memory` command to confirm imports are loading
+- A/B test different memory configurations for effectiveness
+
 ## Usage Example
 
 When you enhance the TDD workflow:
@@ -105,12 +238,45 @@ git commit -m "Add security scan requirement to TDD workflow"
 # Next time Claude Code runs in any project, it includes the new requirement
 ```
 
+## Claude Code Documentation
+
+This system leverages official Claude Code features. For detailed information:
+
+- **Memory Management**: [Claude Code Memory Guide](https://docs.anthropic.com/en/docs/claude-code/memory)
+- **Settings Configuration**: [Claude Code Settings](https://docs.anthropic.com/en/docs/claude-code/settings)
+- **CLI Usage**: [Claude Code CLI Guide](https://docs.anthropic.com/en/docs/claude-code/cli-usage)
+- **Security & Permissions**: [Claude Code Security](https://docs.anthropic.com/en/docs/claude-code/security)
+
+### Key Claude Code Features Used
+
+1. **Recursive Memory Discovery**: Automatic discovery of `CLAUDE.md` files from current directory up to root
+2. **Import System**: `@path/to/import` syntax for modular memory composition (max 5 hops)
+3. **Settings Hierarchy**: Project → User → Global settings precedence
+4. **Memory Commands**: `/memory` to view loaded memories, `/config` for settings management
+
+## Migration Strategy
+
+### For Existing Projects
+
+1. **Backup first**: Use `tools/extract-project-content.sh` to preserve existing content
+2. **Start small**: Apply to 1-2 projects initially to validate approach
+3. **Iterate**: Refine memory modules based on real usage
+4. **Scale gradually**: Apply to more projects as you validate effectiveness
+
+### For New Projects
+
+1. **Choose template**: Select appropriate template from `templates/`
+2. **Customize**: Edit project-specific sections
+3. **Test imports**: Use `/memory` command to verify loading
+4. **Evolve**: Update base modules as you discover better practices
+
 ## Contributing
 
 1. Test changes in isolated projects first
-2. Document rationale for modifications
+2. Document rationale for modifications  
 3. Use conventional commit messages
 4. Validate effectiveness before wide application
+5. Follow LLM-driven development principles (granular, ticket-sized changes)
 
 ## License
 
