@@ -4,7 +4,8 @@
 .env.local
 secrets/
 
-# Extracted content might contain sensitive info
+# Private project data - NEVER commit
+backup/
 extracted-content/
 
 # Personal settings
