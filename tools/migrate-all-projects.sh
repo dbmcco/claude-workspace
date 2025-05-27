@@ -4,7 +4,7 @@
 set -e
 
 WORKSPACE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PROJECTS_DIR="/Users/braydon/projects"
+PROJECTS_DIR="${1:-$PWD}"
 
 echo "🔄 Migrating all projects to modular Claude memory system..."
 
