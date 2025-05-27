@@ -1,0 +1,30 @@
+# Sensitive data
+*.secret
+.env
+.env.local
+secrets/
+
+# Extracted content might contain sensitive info
+extracted-content/
+
+# Personal settings
+settings.local.json
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+.tmp/
