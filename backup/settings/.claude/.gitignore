@@ -1,0 +1,15 @@
+# .claude directory should be tracked in git
+# This file ensures the directory structure is preserved
+
+# Ignore any temporary files
+*.tmp
+*.swp
+*.swo
+*~
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Keep all markdown files
+!*.md
