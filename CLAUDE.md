@@ -76,6 +76,34 @@ When enhancing the system:
 ✅ **GitHub publication** with comprehensive documentation  
 ✅ **Safety systems** including backup and rollback capabilities
 
+## Remote Development with tmux
+
+For persistent Claude Code CLI sessions on remote MacBook Air:
+
+```bash
+# Create persistent session
+tmux new-session -d -s claude-dev
+
+# Attach to session
+tmux attach-session -t claude-dev
+
+# Detach (keeps running): Ctrl+b, then d
+# List sessions: tmux list-sessions
+# Kill session: tmux kill-session -t claude-dev
+```
+
+**Workflow:**
+1. SSH to MacBook Air
+2. Start tmux session: `tmux new-session -s claude-work`
+3. Run Claude Code CLI: `claude`
+4. Detach when switching devices: `Ctrl+b` then `d`
+5. Reattach later: `tmux attach-session -t claude-work`
+
+**Pro tips:**
+- Multiple projects: `tmux new-session -s project-name`
+- New window: `Ctrl+b` then `c`
+- Split panes: `Ctrl+b` then `%` (vertical) or `"` (horizontal)
+
 ## Recent Decisions
 
 - Modular memory system successfully replaces monolithic CLAUDE.md files
@@ -83,3 +111,4 @@ When enhancing the system:
 - Project-specific content preserved alongside universal standards  
 - LLM-driven development principles integrated throughout system
 - GitHub publication enables community benefit from systematic approach
+- tmux integration enables persistent remote development sessions
