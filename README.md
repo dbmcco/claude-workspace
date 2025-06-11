@@ -1,5 +1,7 @@
 # Claude Workspace
 
+⚠️ **Work in Progress** - This documentation is actively being updated as we discover issues with context window bloat, streamline workflows, and develop better approaches to modular memory management.
+
 A modular, version-controlled system for managing Claude Code configurations across multiple development projects.
 
 ## Overview
@@ -426,6 +428,10 @@ This system follows official Claude Code patterns:
 3. Use conventional commit messages
 4. Validate effectiveness across different project types
 5. Follow LLM-driven development principles
+
+## Documentation Notes
+
+This documentation was primarily written by Claude (AI assistant) and proof-read by Braydon. It reflects ongoing experimentation with LLM-driven development patterns and memory management optimization.
 
 ## License
 
