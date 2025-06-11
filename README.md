@@ -1,5 +1,7 @@
 # Claude Workspace
 
+⚠️ **Work in Progress** - This documentation is actively being updated as we discover issues with context window bloat, streamline workflows, and develop better approaches to modular memory management.
+
 A modular, version-controlled system for managing Claude Code configurations across multiple development projects.
 
 ## Overview
@@ -163,14 +165,13 @@ Based on your project depth, use the correct relative path:
 
 ## Project Templates
 
-### Minimal Project Memory
+### Context-Efficient Project Memory (RECOMMENDED)
 ```markdown
 # Project Name
 
-@../../.claude/memories/base/interaction-style.md
-@../../.claude/memories/base/core-principles.md
-@../../.claude/memories/workflows/tdd.md
-@../../.claude/memories/project-types/personal.md
+@../../claude-workspace/memories/base/core-principles.md
+@../../claude-workspace/memories/workflows/tdd.md
+@../../claude-workspace/memories/project-types/personal.md
 
 ## Project Overview
 [What this project does]
@@ -180,9 +181,14 @@ Based on your project depth, use the correct relative path:
 
 ## Key Files
 - [Important files and their purposes]
+
+## Commands to Run
+- Tests: `npm test`
+- Lint: `npm run lint`
+- Build: `npm run build`
 ```
 
-### Comprehensive Project Memory
+### Legacy Comprehensive Project Memory
 ```markdown
 # Project Name
 
@@ -195,7 +201,7 @@ Based on your project depth, use the correct relative path:
 @../../.claude/memories/project-types/experiments.md
 
 ## Project Overview
-[Detailed project description]
+[Detailed project description - WARNING: This pattern can bloat context window]
 
 ## Implementation Status
 [Current status and timeline]
@@ -287,19 +293,52 @@ find . -name "CLAUDE.md" -exec cp {} {}.backup \;
 - ✅ Project-specific content in project files
 - ❌ Massive monolithic memory files
 
+### Context-Efficient Hierarchical Pattern
+
+**RECOMMENDED: Lean Projects + Rich Categories**
+
+Use Claude's recursive discovery to your advantage:
+
+```markdown
+# Category-level memory (personal/CLAUDE.md) - Comprehensive context
+@../.claude/memories/base/interaction-style.md
+@../.claude/memories/base/core-principles.md
+@../.claude/memories/base/code-standards.md
+@../.claude/memories/base/version-control.md
+@../.claude/memories/workflows/tdd.md
+@../.claude/memories/workflows/llm-driven-development.md
+@../.claude/memories/project-types/personal.md
+
+# Project-level memory (personal/my-app/CLAUDE.md) - Strategic essentials only
+@../../claude-workspace/memories/base/core-principles.md
+@../../claude-workspace/memories/workflows/tdd.md
+@../../claude-workspace/memories/project-types/personal.md
+```
+
+**Benefits:**
+- ✅ **Context Window Efficiency**: Projects import only 3-4 essential memories
+- ✅ **Rich Inheritance**: Projects automatically inherit category-level context
+- ✅ **Reduced Duplication**: Shared context lives at category level
+- ✅ **Maintainable**: Update category memory to affect all projects
+
 ### Import Strategy
 
-**Layer your imports strategically:**
+**Anti-pattern: Import Everything Everywhere**
 ```markdown
-# Always include these basics
-@../../.claude/memories/base/interaction-style.md
+❌ Don't duplicate all imports at every project level
+❌ Don't create massive context in every project
+❌ Don't ignore Claude's recursive discovery
+```
+
+**Best Practice: Strategic Layering**
+```markdown
+# Project imports: 3-4 strategic essentials
 @../../.claude/memories/base/core-principles.md
-
-# Add workflow-specific memories
 @../../.claude/memories/workflows/tdd.md
+@../../.claude/memories/project-types/personal.md
 
-# Include project-type specific context
-@../../.claude/memories/project-types/experiments.md
+# Category inheritance provides: interaction-style, code-standards, version-control, etc.
+# Claude finds these automatically via recursive discovery
 ```
 
 ### Project Customization
@@ -389,6 +428,10 @@ This system follows official Claude Code patterns:
 3. Use conventional commit messages
 4. Validate effectiveness across different project types
 5. Follow LLM-driven development principles
+
+## Documentation Notes
+
+This documentation was primarily written by Claude (AI assistant) and proof-read by Braydon. It reflects ongoing experimentation with LLM-driven development patterns and memory management optimization.
 
 ## License
 
