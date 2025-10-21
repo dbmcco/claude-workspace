@@ -30,8 +30,14 @@
       "Bash(wget:*)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:docs.python.org)",
-      "WebFetch(domain:pypi.org)"
+      "WebFetch(domain:pypi.org)",
+      "mcp__obsidian__*",
+      "mcp__journal__*",
+      "mcp__todoist__*",
+      "mcp__reminders__*",
+      "mcp__notes__*"
     ],
     "deny": []
-  }
+  },
+  "enableAllProjectMcpServers": true
 }

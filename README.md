@@ -78,7 +78,7 @@ rm -rf claude-workspace
 ## Memory Modules
 
 ### Base Memories
-- **interaction-style.md**: Personal preferences (address as "Bray.Doc", collaboration style)
+- **interaction-style.md**: Personal preferences (address as "Braydon", collaboration style)
 - **core-principles.md**: Universal development principles (TDD, modular architecture)
 - **code-standards.md**: Coding conventions and file organization
 

@@ -1,0 +1,27 @@
+{
+  "name": "sync-reminder",
+  "description": "Reminds user to sync completed tasks when task completion patterns detected",
+  "trigger_patterns": [
+    "✅ 2025-",
+    "marked complete",
+    "completed.*task",
+    "finished.*LFW",
+    "finished.*Navicyte",
+    "finished.*Diana",
+    "weekly review",
+    "Sunday evening"
+  ],
+  "conditions": {
+    "days_since_last_sync": 7,
+    "completed_tasks_threshold": 3
+  },
+  "reminder_message": "🔄 **Task Sync Reminder**: Detected completed tasks that may need syncing to master lists.\n\nRun sync process:\n```bash\nTask('@sync-scanner find all completed tasks from this week that need syncing to master lists')\nTask('@sync-updater apply all sync requirements from scanner report')\n```\n\nOr suppress reminder if recently synced: 'sync completed' or 'no sync needed'",
+  "suppress_phrases": [
+    "sync completed",
+    "no sync needed",
+    "already synced",
+    "sync up to date"
+  ],
+  "frequency": "weekly_max",
+  "priority": "medium"
+}

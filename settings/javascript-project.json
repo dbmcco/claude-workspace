@@ -32,8 +32,14 @@
       "Bash(wget:*)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:npmjs.com)",
-      "WebFetch(domain:nodejs.org)"
+      "WebFetch(domain:nodejs.org)",
+      "mcp__obsidian__*",
+      "mcp__journal__*",
+      "mcp__todoist__*",
+      "mcp__reminders__*",
+      "mcp__notes__*"
     ],
     "deny": []
-  }
+  },
+  "enableAllProjectMcpServers": true
 }

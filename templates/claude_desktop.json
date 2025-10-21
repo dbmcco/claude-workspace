@@ -1,0 +1,39 @@
+{
+  "mcpServers": {
+    "obsidian": {
+      "command": "node",
+      "args": ["/Users/braydon/projects/experiments/mcp/obsidian_mcp/dist/index.js"],
+      "env": {
+        "OBSIDIAN_VAULT_PATH": "/users/braydon/obsidian/bvault"
+      }
+    },
+    "journal": {
+      "command": "node",
+      "args": ["/Users/braydon/projects/experiments/mcp/journal-mcp/dist/server.js"],
+      "env": {}
+    },
+    "todoist": {
+      "command": "node",
+      "args": ["/Users/braydon/projects/experiments/mcp/todoist_mcp/dist/index.js"],
+      "env": {
+        "TODOIST_API_TOKEN": "Todoist API Token e4df4a7450a48c58b173f2851753a2998b2a8841"
+      }
+    },
+    "reminders": {
+      "command": "node",
+      "args": ["/Users/braydon/projects/experiments/mcp/reminders_mcp/dist/index.js"]
+    },
+    "canva-dev": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@canva/cli@latest",
+        "mcp"
+      ]
+    },
+    "notes": {
+      "command": "node",
+      "args": ["/Users/braydon/projects/experiments/mcp/notes_mcp/dist/index.js"]
+    }
+  }
+}

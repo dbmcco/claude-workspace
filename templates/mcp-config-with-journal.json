@@ -1,0 +1,63 @@
+{
+  "mcpServers": {
+    "obsidian": {
+      "command": "node",
+      "args": ["/Users/braydon/projects/experiments/mcp/obsidian_mcp/dist/index.js"],
+      "env": {
+        "OBSIDIAN_VAULT_PATH": "/users/braydon/obsidian/bvault"
+      }
+    },
+    "journal": {
+      "command": "node",
+      "args": ["/Users/braydon/projects/experiments/mcp/journal-mcp/dist/server.js"],
+      "env": {}
+    },
+    "notes": {
+      "command": "node",
+      "args": ["/Users/braydon/projects/experiments/mcp/notes_mcp/dist/index.js"]
+    }
+  },
+  "permissions": {
+    "allow": [
+      "mcp__obsidian__*",
+      "mcp__journal__*",
+      "mcp__notes__*"
+    ]
+  },
+  "tools": {
+    "journal": {
+      "description": "Agent coordination and cross-session learning",
+      "functions": [
+        "mcp__journal__log_agent_activity",
+        "mcp__journal__store_session_memory", 
+        "mcp__journal__retrieve_relevant_memories",
+        "mcp__journal__get_agent_context",
+        "mcp__journal__update_user_pattern",
+        "mcp__journal__get_user_patterns"
+      ]
+    },
+    "obsidian": {
+      "description": "Vault access and note intelligence",
+      "functions": [
+        "mcp__obsidian__query_vault",
+        "mcp__obsidian__search_notes",
+        "mcp__obsidian__get_note", 
+        "mcp__obsidian__get_backlinks",
+        "mcp__obsidian__write_note",
+        "mcp__obsidian__create_note",
+        "mcp__obsidian__append_to_note",
+        "mcp__obsidian__update_note_section"
+      ]
+    },
+    "notes_system": {
+      "description": "Apple Notes system integration",
+      "functions": [
+        "mcp__notes__list_notes",
+        "mcp__notes__get_note",
+        "mcp__notes__create_note",
+        "mcp__notes__update_note",
+        "mcp__notes__search_notes"
+      ]
+    }
+  }
+}

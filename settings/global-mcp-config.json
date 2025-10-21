@@ -1,0 +1,115 @@
+{
+  "mcpServers": {
+    "obsidian": {
+      "command": "node",
+      "args": ["/Users/braydon/projects/experiments/mcp/obsidian_mcp/dist/index.js"],
+      "env": {
+        "OBSIDIAN_VAULT_PATH": "/users/braydon/obsidian/bvault"
+      }
+    },
+    "journal": {
+      "command": "node",
+      "args": ["/Users/braydon/projects/experiments/mcp/journal-mcp/dist/server.js"],
+      "env": {}
+    },
+    "todoist": {
+      "command": "node",
+      "args": ["/Users/braydon/projects/experiments/mcp/todoist_mcp/dist/index.js"],
+      "env": {
+        "TODOIST_API_TOKEN": "Todoist API Token e4df4a7450a48c58b173f2851753a2998b2a8841"
+      }
+    },
+    "reminders": {
+      "command": "node",
+      "args": ["/Users/braydon/projects/experiments/mcp/reminders_mcp/dist/index.js"]
+    },
+    "canva-dev": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@canva/cli@latest",
+        "mcp"
+      ]
+    },
+    "notes": {
+      "command": "node",
+      "args": ["/Users/braydon/projects/experiments/mcp/notes_mcp/dist/index.js"]
+    },
+    "atlassian": {
+      "endpoint": "https://mcp.atlassian.com/v1/sse"
+    }
+  },
+  "permissions": {
+    "allow": [
+      "mcp__obsidian__*",
+      "mcp__journal__*",
+      "mcp__todoist__*",
+      "mcp__reminders__*",
+      "mcp__notes__*",
+      "mcp__atlassian__*"
+    ]
+  },
+  "tools": {
+    "agent_coordination": {
+      "description": "PM Claude → sub-agent workflow with learning",
+      "usage": [
+        "Before delegating: mcp__journal__get_agent_context to check past performance",
+        "Log delegation: mcp__journal__log_agent_activity with reasoning and outcome",
+        "Learn from failures: Search journal for similar attempts before deciding",
+        "Store sessions: mcp__journal__store_session_memory for cross-session learning"
+      ],
+      "learning_commands": [
+        "Check journal before delegating similar tasks",
+        "Analyze agent success patterns: grep -r '@agent_name' ~/.claude-workspace/journal/",
+        "Apply lessons from failures: reference specific journal entries",
+        "Document learning-informed decisions with learning_applied: true"
+      ]
+    },
+    "vault_intelligence": {
+      "description": "Obsidian vault access and note intelligence",
+      "functions": [
+        "mcp__obsidian__query_vault",
+        "mcp__obsidian__search_notes",
+        "mcp__obsidian__get_note",
+        "mcp__obsidian__write_note",
+        "mcp__obsidian__create_note"
+      ]
+    },
+    "task_management": {
+      "description": "Todoist task management integration",
+      "functions": [
+        "mcp__todoist__create_task",
+        "mcp__todoist__get_tasks",
+        "mcp__todoist__update_task",
+        "mcp__todoist__delete_task",
+        "mcp__todoist__get_projects"
+      ]
+    },
+    "reminders_system": {
+      "description": "Apple Reminders system integration",
+      "functions": [
+        "mcp__reminders__list_reminder_lists",
+        "mcp__reminders__get_reminders",
+        "mcp__reminders__create_reminder",
+        "mcp__reminders__update_reminder",
+        "mcp__reminders__delete_reminder"
+      ]
+    },
+    "notes_system": {
+      "description": "Apple Notes system integration",
+      "functions": [
+        "mcp__notes__list_notes",
+        "mcp__notes__get_note",
+        "mcp__notes__create_note",
+        "mcp__notes__update_note",
+        "mcp__notes__search_notes"
+      ]
+    },
+    "atlassian_integration": {
+      "description": "Atlassian Jira and Confluence integration",
+      "functions": [
+        "mcp__atlassian__*"
+      ]
+    }
+  }
+}

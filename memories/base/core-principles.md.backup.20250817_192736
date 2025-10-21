@@ -8,4 +8,3 @@
 6. **Context Focus**: LLM should only interact with files related to current task scope
 7. **No Mocks**: Avoid mocks in tests; use real implementations or fixtures
 8. **Clean Code**: Prioritize simple, clean, maintainable solutions
-12. **Claude Code Agents**: Leverage specialized sub-agents and output styles for focused development workflows

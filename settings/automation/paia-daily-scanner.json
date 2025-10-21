@@ -1,0 +1,38 @@
+{
+  "name": "paia-daily-scanner",
+  "description": "Automated 4-hour scanning of daily tasks for @paia instructions with immediate execution",
+  "schedule": "every_4_hours",
+  "automation_type": "scheduled_agent_execution",
+  "working_hours_only": true,
+  "time_slots": [
+    "08:00",
+    "12:00", 
+    "16:00",
+    "20:00"
+  ],
+  "workflow": [
+    {
+      "step": 1,
+      "agent": "@paia-analyzer",
+      "command": "specifically scan today's daily note and upcoming daily notes for any @paia instructions embedded within task lists, analyze context around each instruction, follow any cross-references, and prepare action briefs for immediate processing",
+      "timeout": 120
+    },
+    {
+      "step": 2,
+      "agent": "@paia-updater", 
+      "command": "execute all action briefs from daily notes scan with full context awareness and completion tracking, focusing on task scheduling, redistribution, and optimization",
+      "timeout": 180,
+      "depends_on": "step_1_has_results"
+    }
+  ],
+  "notification_settings": {
+    "on_completion": "summary_only",
+    "on_error": "detailed_alert",
+    "on_no_instructions": "silent"
+  },
+  "quality_safeguards": {
+    "max_task_moves_per_scan": 10,
+    "preserve_priority_tasks": true,
+    "require_confirmation_for_critical": false
+  }
+}

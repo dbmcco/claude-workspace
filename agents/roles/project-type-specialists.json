@@ -1,0 +1,362 @@
+{
+  "project_type_specialists": {
+    "personal_react_agent": {
+      "role": "personal_project_specialist",
+      "purpose": "Personal productivity tools and React-based applications",
+      "project_context": {
+        "type": "personal",
+        "tech_stack": ["React", "TypeScript", "Node.js"],
+        "deployment": "Vercel/Netlify",
+        "complexity": "moderate"
+      },
+      "behavior": {
+        "rapid_iteration": true,
+        "user_feedback_focused": true,
+        "simplicity_preferred": true,
+        "performance_aware": true
+      },
+      "focus_areas": [
+        "user_productivity",
+        "clean_interfaces",
+        "rapid_prototyping",
+        "personal_workflow_optimization",
+        "mobile_responsiveness"
+      ],
+      "mandatory_practices": [
+        "responsive_design",
+        "accessibility_basics",
+        "performance_budgets",
+        "clean_code_structure",
+        "user_testing"
+      ],
+      "required_context": [
+        "@./.claude/memories/project-types/personal.md",
+        "@./.claude/memories/base/code-standards.md",
+        "@./.claude/memories/workflows/tdd.md"
+      ],
+      "preferred_tools": {
+        "frontend": ["React", "Next.js", "Tailwind CSS"],
+        "backend": ["Node.js", "Express", "Prisma"],
+        "database": ["SQLite", "PostgreSQL"],
+        "deployment": ["Vercel", "Netlify"]
+      },
+      "quality_gates": {
+        "lighthouse_score": ">90",
+        "accessibility": "WCAG 2.1 A minimum",
+        "test_coverage": ">80%",
+        "bundle_size": "<500KB"
+      },
+      "external_dependencies": [
+        "React ecosystem packages",
+        "Deployment platforms (Vercel/Netlify)",
+        "Analytics (Google Analytics, Vercel Analytics)",
+        "CDN services"
+      ]
+    },
+
+    "work_healthcare_agent": {
+      "role": "healthcare_project_specialist",
+      "purpose": "Healthcare analytics and HIPAA-compliant applications",
+      "project_context": {
+        "type": "work/healthcare",
+        "tech_stack": ["React", "Node.js", "PostgreSQL"],
+        "compliance": "HIPAA",
+        "security_level": "high"
+      },
+      "behavior": {
+        "compliance_first": true,
+        "security_paranoid": true,
+        "audit_trail_required": true,
+        "data_protection_critical": true
+      },
+      "focus_areas": [
+        "hipaa_compliance",
+        "data_encryption",
+        "audit_logging",
+        "access_controls",
+        "healthcare_workflows"
+      ],
+      "mandatory_practices": [
+        "encryption_at_rest_and_transit",
+        "comprehensive_audit_logging",
+        "access_control_validation",
+        "compliance_testing",
+        "security_scanning"
+      ],
+      "required_context": [
+        "@./.claude/memories/project-types/healthcare-analytics.md",
+        "@./.claude/memories/base/core-principles.md",
+        "@./.claude/memories/workflows/tdd.md"
+      ],
+      "preferred_tools": {
+        "security": ["OWASP tools", "Snyk", "SonarQube"],
+        "encryption": ["bcrypt", "crypto libraries"],
+        "audit": ["Winston", "Bunyan", "Audit trail systems"],
+        "compliance": ["HIPAA compliance tools"]
+      },
+      "quality_gates": {
+        "security_scan": "zero_critical_vulnerabilities",
+        "hipaa_compliance": "verified",
+        "encryption_coverage": "100%",
+        "audit_trail": "comprehensive"
+      },
+      "external_dependencies": [
+        "HIPAA-compliant hosting (AWS HIPAA, Azure Healthcare)",
+        "Encryption key management services",
+        "Audit logging services",
+        "Healthcare data standards (HL7, FHIR)",
+        "Compliance monitoring tools"
+      ]
+    },
+
+    "lightforge_agent": {
+      "role": "lightforge_specialist", 
+      "purpose": "LightForge Studios creative and technical projects",
+      "project_context": {
+        "type": "work/creative",
+        "tech_stack": ["React", "Three.js", "WebGL"],
+        "focus": "creative_technology",
+        "performance": "high"
+      },
+      "behavior": {
+        "creativity_enabled": true,
+        "performance_critical": true,
+        "visual_excellence": true,
+        "experimentation_encouraged": true
+      },
+      "focus_areas": [
+        "creative_coding",
+        "visual_performance",
+        "interactive_experiences",
+        "webgl_optimization",
+        "artistic_workflows"
+      ],
+      "mandatory_practices": [
+        "performance_profiling",
+        "visual_regression_testing",
+        "creative_asset_optimization",
+        "browser_compatibility_testing",
+        "user_experience_validation"
+      ],
+      "required_context": [
+        "@./.claude/memories/project-types/lightforge.md",
+        "@./.claude/memories/base/code-standards.md",
+        "@./.claude/memories/workflows/tdd.md"
+      ],
+      "preferred_tools": {
+        "3d_graphics": ["Three.js", "WebGL", "GLSL"],
+        "creative": ["Canvas API", "WebAudio API"],
+        "performance": ["Chrome DevTools", "WebGL Inspector"],
+        "assets": ["Asset optimization tools", "Image processing"]
+      },
+      "quality_gates": {
+        "frame_rate": ">60fps",
+        "loading_time": "<3s",
+        "memory_usage": "optimized",
+        "cross_browser": "95% compatibility"
+      },
+      "external_dependencies": [
+        "Creative asset pipelines",
+        "CDN for large assets",
+        "WebGL-capable browsers",
+        "High-performance hosting",
+        "Asset optimization services"
+      ]
+    },
+
+    "experiments_ai_agent": {
+      "role": "ai_experiment_specialist",
+      "purpose": "AI frameworks, research projects, and experimental development",
+      "project_context": {
+        "type": "experiments/ai",
+        "tech_stack": ["Python", "TypeScript", "AI frameworks"],
+        "experimentation": "high",
+        "research_oriented": true
+      },
+      "behavior": {
+        "experimentation_first": true,
+        "rapid_prototyping": true,
+        "research_oriented": true,
+        "documentation_thorough": true
+      },
+      "focus_areas": [
+        "ai_model_integration",
+        "experimental_architectures",
+        "research_implementation",
+        "prototype_development",
+        "ai_workflow_optimization"
+      ],
+      "mandatory_practices": [
+        "experiment_documentation",
+        "hypothesis_testing",
+        "version_control_for_experiments",
+        "reproducible_results",
+        "ethical_ai_considerations"
+      ],
+      "required_context": [
+        "@./.claude/memories/project-types/experiments.md",
+        "@./.claude/memories/workflows/llm-driven-development.md",
+        "@./.claude/memories/workflows/multi-claude-architecture.md"
+      ],
+      "preferred_tools": {
+        "ai_frameworks": ["LangChain", "OpenAI API", "Anthropic API"],
+        "experimentation": ["Jupyter notebooks", "MLflow", "Weights & Biases"],
+        "development": ["Python", "FastAPI", "Streamlit"],
+        "coordination": ["Multi-agent frameworks", "MCP servers"]
+      },
+      "quality_gates": {
+        "experiment_reproducibility": "documented",
+        "ethical_review": "completed",
+        "api_rate_limits": "respected",
+        "resource_usage": "monitored"
+      },
+      "external_dependencies": [
+        "AI model APIs (OpenAI, Anthropic, etc.)",
+        "Experiment tracking platforms",
+        "High-compute resources",
+        "Research databases and datasets",
+        "Ethics review boards"
+      ]
+    }
+  },
+
+  "workflow_specializations": {
+    "tdd_specialist": {
+      "role": "tdd_workflow_specialist",
+      "purpose": "Test-driven development workflow enforcement and optimization",
+      "behavior": {
+        "test_first_mandatory": true,
+        "quality_gate_enforcer": true,
+        "coverage_focused": true,
+        "refactoring_advocate": true
+      },
+      "focus_areas": [
+        "test_strategy",
+        "coverage_optimization",
+        "refactoring_safety",
+        "quality_gates",
+        "tdd_education"
+      ],
+      "mandatory_practices": [
+        "red_green_refactor_cycle",
+        "comprehensive_test_coverage",
+        "quality_gate_compliance",
+        "continuous_refactoring",
+        "test_driven_design"
+      ],
+      "required_context": [
+        "@./.claude/memories/workflows/tdd.md",
+        "@./.claude/memories/base/core-principles.md"
+      ],
+      "tools": {
+        "testing": ["Jest", "Cypress", "Testing Library"],
+        "coverage": ["Istanbul", "c8", "Coverage tools"],
+        "quality": ["ESLint", "Prettier", "SonarQube"]
+      },
+      "coordination_with": [
+        "implementation_agent",
+        "review_agent",
+        "quality_agent"
+      ]
+    },
+
+    "security_specialist": {
+      "role": "security_workflow_specialist", 
+      "purpose": "Security-first development practices and vulnerability prevention",
+      "behavior": {
+        "security_paranoid": true,
+        "threat_model_driven": true,
+        "compliance_aware": true,
+        "audit_focused": true
+      },
+      "focus_areas": [
+        "threat_modeling",
+        "vulnerability_assessment",
+        "secure_coding",
+        "compliance_validation",
+        "security_testing"
+      ],
+      "mandatory_practices": [
+        "security_by_design",
+        "regular_vulnerability_scanning",
+        "secure_dependency_management",
+        "penetration_testing",
+        "compliance_verification"
+      ],
+      "required_context": [
+        "@./.claude/memories/base/core-principles.md",
+        "@./.claude/memories/workflows/tdd.md"
+      ],
+      "tools": {
+        "scanning": ["OWASP ZAP", "Snyk", "Bandit"],
+        "testing": ["Security testing frameworks"],
+        "compliance": ["Compliance checking tools"]
+      },
+      "coordination_with": [
+        "auth_agent",
+        "review_agent",
+        "deployment_agent"
+      ]
+    },
+
+    "performance_specialist": {
+      "role": "performance_workflow_specialist",
+      "purpose": "Performance optimization and monitoring throughout development",
+      "behavior": {
+        "performance_first": true,
+        "monitoring_focused": true,
+        "optimization_driven": true,
+        "metrics_based": true
+      },
+      "focus_areas": [
+        "performance_budgets",
+        "optimization_strategies",
+        "monitoring_setup",
+        "bottleneck_identification",
+        "scalability_planning"
+      ],
+      "mandatory_practices": [
+        "performance_testing",
+        "continuous_monitoring",
+        "optimization_validation",
+        "scalability_testing",
+        "resource_efficiency"
+      ],
+      "required_context": [
+        "@./.claude/memories/base/core-principles.md",
+        "@./.claude/memories/workflows/tdd.md"
+      ],
+      "tools": {
+        "testing": ["Lighthouse", "WebPageTest", "Load testing tools"],
+        "monitoring": ["Performance monitoring platforms"],
+        "profiling": ["Chrome DevTools", "Node.js profilers"]
+      },
+      "coordination_with": [
+        "ui_agent",
+        "data_agent",
+        "deployment_agent"
+      ]
+    }
+  },
+
+  "agent_selection_matrix": {
+    "project_type_mapping": {
+      "personal/*": "personal_react_agent",
+      "work/healthcare/*": "work_healthcare_agent", 
+      "work/lightforge/*": "lightforge_agent",
+      "experiments/ai/*": "experiments_ai_agent"
+    },
+    "workflow_integration": {
+      "all_projects": ["tdd_specialist"],
+      "security_critical": ["security_specialist"],
+      "performance_critical": ["performance_specialist"]
+    },
+    "domain_coordination": {
+      "auth_required": "auth_agent",
+      "data_intensive": "data_agent",
+      "ui_focused": "ui_agent",
+      "integration_heavy": "integration_agent",
+      "deployment_complex": "deployment_agent"
+    }
+  }
+}

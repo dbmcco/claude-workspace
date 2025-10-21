@@ -5,6 +5,30 @@
 - Configure MCPs specifically for each project type
 - Leverage MCPs for tool integration and data access
 
+### Core MCP Services Available
+- **Obsidian MCP**: Vault access and note intelligence across all projects
+- **Reminders MCP**: Task and reminder management integration
+- **Journal MCP**: Agent coordination and cross-session learning (NEW)
+
+### Journal MCP for Agent Coordination
+The shared Journal MCP enables PM Claude → sub-agent workflows across all projects:
+- **Agent Activity Logging**: Track delegation, reasoning, and outcomes
+- **Cross-Session Memory**: Persistent conversation context using obra journal pattern
+- **User Pattern Learning**: Identify Braydon's preferences and successful strategies
+- **Project Context**: Separate project memories while enabling cross-project pattern sharing
+
+Configure in Claude Code settings:
+```json
+{
+  "mcps": {
+    "journal": {
+      "command": "node",
+      "args": ["/Users/braydon/projects/claude-workspace/mcps/journal-mcp/dist/server.js"]
+    }
+  }
+}
+```
+
 ## Rule-Based Documentation
 - Don't write "human" documentation; use rule + reusable prompt files
 - Keep rules/prompts very small and granular (ticket-sized)

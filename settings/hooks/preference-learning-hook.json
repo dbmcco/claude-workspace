@@ -1,0 +1,59 @@
+{
+  "name": "preference-learning-hook",
+  "description": "Detects moments to learn Braydon's preferences, frustrations, and what to avoid for future sessions",
+  "type": "assistant-message",
+  "triggers": [
+    {
+      "pattern": "(?i)(that.*didn'?t work|broke|failed|error|inefficient|slow|frustrating|annoying|wrong approach)",
+      "description": "Things that went wrong or were inefficient"
+    },
+    {
+      "pattern": "(?i)(prefer(red?|s)?|like.*better|instead.*do|rather.*have|better.*way)",
+      "description": "User preference expressions"
+    },
+    {
+      "pattern": "(?i)(don'?t.*do.*that|avoid|never.*again|not.*like.*that|different.*approach)",
+      "description": "Things to avoid in future"
+    },
+    {
+      "pattern": "(?i)(wasted.*time|took.*too.*long|unnecessary|could.*have.*been|simpler.*way)",
+      "description": "Inefficient approaches to remember"
+    },
+    {
+      "pattern": "(?i)(that'?s.*exactly|perfect|just.*right|good.*approach|like.*that.*style)",
+      "description": "Working approaches worth remembering"
+    },
+    {
+      "pattern": "(?i)(confusing|unclear|hard.*to.*follow|explain.*better|more.*context)",
+      "description": "Communication style learning opportunities"
+    }
+  ],
+  "conditions": [
+    {
+      "type": "conversation_length",
+      "min": 3,
+      "description": "Enough context for meaningful preference learning"
+    },
+    {
+      "type": "exclude_pattern",
+      "pattern": "(?i)(just.*checking|quick.*question|status.*update)",
+      "description": "Skip quick informational requests"
+    }
+  ],
+  "suppression": {
+    "keywords": ["no pattern", "routine only", "skip learning"],
+    "duration_minutes": 45,
+    "description": "Allow suppression when no meaningful patterns emerge"
+  },
+  "frequency_limit": {
+    "max_per_hour": 1,
+    "max_per_day": 4,
+    "description": "Focused learning without spam"
+  },
+  "prompt": "📝 **Pattern Learning Opportunity**\n\nThis conversation contains signals about your preferences or things to avoid:\n- Working approaches vs inefficient ones\n- Communication styles that work vs frustrating ones\n- Technical choices that broke vs worked well\n\n**Should I capture these patterns for future sessions?**\nFocus on what to repeat/avoid rather than celebrating wins.\n\nRespond 'learn' to journal patterns, 'skip' if routine work.",
+  "response_handling": {
+    "affirmative": ["learn", "yes", "capture", "journal"],
+    "negative": ["skip", "routine", "no pattern"],
+    "action": "mcp__journal__log_agent_activity"
+  }
+}

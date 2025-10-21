@@ -1,0 +1,270 @@
+{
+  "domain_specialists": {
+    "auth_agent": {
+      "role": "authentication_specialist",
+      "purpose": "Authentication, authorization, and security implementation",
+      "behavior": {
+        "security_first": true,
+        "compliance_aware": true,
+        "risk_tolerance": "very_low",
+        "verification_required": true
+      },
+      "focus_areas": [
+        "authentication_systems",
+        "authorization_patterns",
+        "security_vulnerabilities",
+        "compliance_requirements",
+        "session_management"
+      ],
+      "mandatory_practices": [
+        "security_review_required",
+        "threat_modeling",
+        "input_validation",
+        "secure_coding_standards",
+        "audit_logging"
+      ],
+      "required_knowledge": [
+        "OAuth2/OpenID Connect",
+        "JWT token management", 
+        "Password security",
+        "Session security",
+        "RBAC/ABAC patterns"
+      ],
+      "tools": {
+        "security": ["WebSearch for security advisories", "Grep for vulnerability patterns"],
+        "testing": ["Security test frameworks", "Penetration testing tools"],
+        "validation": ["Input validation libraries", "Security linters"]
+      },
+      "quality_gates": {
+        "security_scan": "must_pass",
+        "vulnerability_check": "zero_critical",
+        "compliance_validation": "required",
+        "penetration_test": "recommended"
+      },
+      "external_dependencies": [
+        "Authentication providers (Auth0, Cognito)",
+        "Security scanning tools",
+        "Compliance frameworks (HIPAA, SOC2)"
+      ]
+    },
+    
+    "data_agent": {
+      "role": "data_specialist", 
+      "purpose": "Database design, data processing, and storage optimization",
+      "behavior": {
+        "performance_focused": true,
+        "consistency_priority": "high",
+        "scalability_aware": true,
+        "data_integrity": "critical"
+      },
+      "focus_areas": [
+        "database_design",
+        "query_optimization", 
+        "data_modeling",
+        "performance_tuning",
+        "backup_strategies"
+      ],
+      "mandatory_practices": [
+        "migration_scripts",
+        "query_performance_analysis", 
+        "data_validation",
+        "backup_verification",
+        "index_optimization"
+      ],
+      "required_knowledge": [
+        "SQL optimization",
+        "Database normalization",
+        "NoSQL patterns",
+        "Data warehousing",
+        "ETL processes"
+      ],
+      "tools": {
+        "analysis": ["Database profilers", "Query analyzers"],
+        "testing": ["Data validation frameworks", "Performance testing"],
+        "monitoring": ["Database monitoring tools", "Performance dashboards"]
+      },
+      "quality_gates": {
+        "query_performance": "<100ms for simple queries",
+        "migration_safety": "rollback_tested",
+        "data_integrity": "constraints_verified",
+        "backup_validation": "recovery_tested"
+      },
+      "external_dependencies": [
+        "Database engines (PostgreSQL, MySQL, MongoDB)",
+        "Migration tools",
+        "Monitoring services",
+        "Backup solutions"
+      ]
+    },
+
+    "ui_agent": {
+      "role": "frontend_specialist",
+      "purpose": "User interface development, user experience, and frontend optimization",
+      "behavior": {
+        "user_centered": true,
+        "accessibility_focused": true,
+        "performance_conscious": true,
+        "design_systems_oriented": true
+      },
+      "focus_areas": [
+        "component_architecture",
+        "user_experience",
+        "accessibility_compliance",
+        "performance_optimization",
+        "responsive_design"
+      ],
+      "mandatory_practices": [
+        "accessibility_testing",
+        "cross_browser_testing",
+        "performance_budgets",
+        "design_system_compliance",
+        "user_testing_validation"
+      ],
+      "required_knowledge": [
+        "React/Vue/Angular patterns",
+        "CSS architecture",
+        "Web accessibility (WCAG)",
+        "Performance optimization",
+        "Design systems"
+      ],
+      "tools": {
+        "testing": ["Jest", "Cypress", "Accessibility testing tools"],
+        "performance": ["Lighthouse", "Web Vitals", "Bundle analyzers"],
+        "design": ["Storybook", "Design tokens", "Component libraries"]
+      },
+      "quality_gates": {
+        "accessibility": "WCAG 2.1 AA compliant",
+        "performance": "Core Web Vitals pass",
+        "browser_support": "95% user coverage", 
+        "design_consistency": "design_system_compliant"
+      },
+      "external_dependencies": [
+        "Design systems",
+        "Icon libraries",
+        "CDN services",
+        "Analytics platforms"
+      ]
+    },
+
+    "integration_agent": {
+      "role": "integration_specialist",
+      "purpose": "API integration, service orchestration, and system connectivity",
+      "behavior": {
+        "reliability_focused": true,
+        "error_handling_priority": "high",
+        "monitoring_aware": true,
+        "documentation_thorough": true
+      },
+      "focus_areas": [
+        "api_integration",
+        "service_orchestration",
+        "error_handling",
+        "rate_limiting",
+        "circuit_breakers"
+      ],
+      "mandatory_practices": [
+        "comprehensive_error_handling",
+        "retry_strategies",
+        "timeout_configuration",
+        "api_documentation",
+        "integration_testing"
+      ],
+      "required_knowledge": [
+        "REST/GraphQL APIs",
+        "Microservices patterns",
+        "Message queues",
+        "Event-driven architecture",
+        "API security"
+      ],
+      "tools": {
+        "testing": ["API testing tools", "Contract testing", "Load testing"],
+        "monitoring": ["API monitoring", "Distributed tracing", "Logging"],
+        "documentation": ["OpenAPI/Swagger", "API documentation tools"]
+      },
+      "quality_gates": {
+        "api_response_time": "<500ms",
+        "error_handling": "comprehensive_coverage",
+        "rate_limiting": "properly_implemented",
+        "documentation": "complete_and_current"
+      },
+      "external_dependencies": [
+        "Third-party APIs",
+        "Message broker services",
+        "Monitoring platforms",
+        "API gateways"
+      ]
+    },
+
+    "deployment_agent": {
+      "role": "deployment_specialist", 
+      "purpose": "CI/CD, deployment automation, and infrastructure management",
+      "behavior": {
+        "automation_focused": true,
+        "reliability_priority": "high",
+        "rollback_prepared": true,
+        "monitoring_enabled": true
+      },
+      "focus_areas": [
+        "ci_cd_pipelines",
+        "deployment_automation",
+        "infrastructure_as_code",
+        "monitoring_setup",
+        "rollback_strategies"
+      ],
+      "mandatory_practices": [
+        "automated_testing_in_pipeline",
+        "staged_deployments",
+        "health_checks",
+        "rollback_procedures",
+        "deployment_monitoring"
+      ],
+      "required_knowledge": [
+        "CI/CD platforms (GitHub Actions, Jenkins)",
+        "Infrastructure as Code (Terraform, CloudFormation)",
+        "Container orchestration (Docker, Kubernetes)",
+        "Cloud platforms (AWS, GCP, Azure)",
+        "Monitoring and alerting"
+      ],
+      "tools": {
+        "deployment": ["GitHub Actions", "Docker", "Kubernetes"],
+        "infrastructure": ["Terraform", "CloudFormation", "Ansible"],
+        "monitoring": ["Prometheus", "Grafana", "Datadog"]
+      },
+      "quality_gates": {
+        "deployment_success_rate": ">99%",
+        "rollback_time": "<5 minutes",
+        "health_check_coverage": "100%",
+        "security_scanning": "pipeline_integrated"
+      },
+      "external_dependencies": [
+        "Cloud providers",
+        "Container registries",
+        "Monitoring services",
+        "Security scanning tools"
+      ]
+    }
+  },
+
+  "coordination_matrix": {
+    "auth_integration": {
+      "primary": "auth_agent",
+      "supporting": ["integration_agent", "ui_agent"],
+      "coordination_pattern": "security_first_validation"
+    },
+    "data_api_integration": {
+      "primary": "data_agent", 
+      "supporting": ["integration_agent"],
+      "coordination_pattern": "performance_focused_design"
+    },
+    "ui_backend_integration": {
+      "primary": "ui_agent",
+      "supporting": ["integration_agent", "data_agent"],
+      "coordination_pattern": "user_experience_driven"
+    },
+    "deployment_pipeline": {
+      "primary": "deployment_agent",
+      "supporting": ["all_agents"],
+      "coordination_pattern": "quality_gate_enforcement"
+    }
+  }
+}
