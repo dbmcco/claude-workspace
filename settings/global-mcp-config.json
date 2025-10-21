@@ -16,7 +16,7 @@
       "command": "node",
       "args": ["/Users/braydon/projects/experiments/mcp/todoist_mcp/dist/index.js"],
       "env": {
-        "TODOIST_API_TOKEN": "Todoist API Token e4df4a7450a48c58b173f2851753a2998b2a8841"
+        "TODOIST_API_TOKEN": "REPLACE_WITH_TODOIST_API_TOKEN_ENV"
       }
     },
     "reminders": {

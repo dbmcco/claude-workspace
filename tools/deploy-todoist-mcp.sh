@@ -7,7 +7,7 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-TODOIST_TOKEN="Todoist API Token e4df4a7450a48c58b173f2851753a2998b2a8841"
+: "${TODOIST_TOKEN:?Set TODOIST_TOKEN in the environment (export TODOIST_TOKEN=<your token>)}"
 
 echo "🚀 Deploying Todoist MCP to projects..."
 
