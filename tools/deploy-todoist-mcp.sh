@@ -7,7 +7,10 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-: "${TODOIST_TOKEN:?Set TODOIST_TOKEN in the environment (export TODOIST_TOKEN=<your token>)}"
+# Load local environment if present (never committed)
+if [ -f "$WORKSPACE_ROOT/.env" ]; then set -a; . "$WORKSPACE_ROOT/.env"; set +a; fi
+if [ -f "$WORKSPACE_ROOT/.env.local" ]; then set -a; . "$WORKSPACE_ROOT/.env.local"; set +a; fi
+: "${TODOIST_TOKEN:?Set TODOIST_TOKEN in the environment (export TODOIST_TOKEN=<your token> or add to .env/.env.local)}"
 
 echo "🚀 Deploying Todoist MCP to projects..."
 
