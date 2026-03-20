@@ -30,6 +30,7 @@
       "Bash(wget:*)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:docs.python.org)",
+      "WebFetch(domain:linear.app)",
       "WebFetch(domain:pypi.org)",
       "mcp__obsidian__*",
       "mcp__journal__*",

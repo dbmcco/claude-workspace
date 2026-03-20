@@ -11,6 +11,7 @@
 @./memories/workflows/task-synchronization.md
 @./memories/workflows/paia-agent-system.md
 @./memories/workflows/paia-automation-status.md
+@./memories/workflows/beads-tracking.md
 
 ## Project-Specific Context
 

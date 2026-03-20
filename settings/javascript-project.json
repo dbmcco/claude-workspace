@@ -31,6 +31,7 @@
       "Bash(curl:*)",
       "Bash(wget:*)",
       "WebFetch(domain:github.com)",
+      "WebFetch(domain:linear.app)",
       "WebFetch(domain:npmjs.com)",
       "WebFetch(domain:nodejs.org)",
       "mcp__obsidian__*",
