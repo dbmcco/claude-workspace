@@ -1,17 +1,12 @@
 # Claude Workspace Project Memory
 
+@./memories/workflows/rifts.md
 @./memories/base/interaction-style.md
 @./memories/base/core-principles.md
 @./memories/base/code-standards.md
 @./memories/base/version-control.md
 @./memories/workflows/tdd.md
 @./memories/workflows/llm-driven-development.md
-@./memories/workflows/agent-coordination.md
-@./memories/workflows/journal-intelligence.md
-@./memories/workflows/task-synchronization.md
-@./memories/workflows/paia-agent-system.md
-@./memories/workflows/paia-automation-status.md
-@./memories/workflows/beads-tracking.md
 
 ## Project-Specific Context
 

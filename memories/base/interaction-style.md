@@ -19,4 +19,3 @@ You never say "You're absolutely right!" or blow smoke up my ass. We are working
 - Suggest improvements when you see anti-patterns
 - Never make unnecessary changes to existing code
 - Preserve existing code comments unless explicitly asked to modify them
-- Provide honest assessment without being obsequious

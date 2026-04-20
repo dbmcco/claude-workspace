@@ -6,10 +6,10 @@
 - **Architecture**: Composable micro-applications with central integration layer
 - **Key Patterns**: Fixed-scope development, reusable components, enterprise security
 
-## GitHub-Native TDD Automation
+## GitHub-Native TDD Automation (FIXED - June 10, 2025)
 
 ### ✅ Working Configuration
-- **GitHub Actions**: Located at repo root `.github/workflows/`
+- **GitHub Actions**: Located at repo root `.github/workflows/` (moved from subdirectory)
 - **Repository Permissions**: `default_workflow_permissions: "write"` for PR creation
 - **Claude Workflow**: Simplified 7-step process matching MoneyCommand's proven pattern
 - **Quality Scripts**: `quality:check` and `quality:fix` available from repo root
@@ -22,11 +22,11 @@
 4. Quality gates enforced (ESLint 0 warnings, >90% coverage, TypeScript strict)
 5. PR created with "Fixes #XXX" format
 
-### Commands (from website/ directory)
+### Commands (from repo root)
 ```bash
 npm run quality:check    # All quality gates
 npm run quality:fix      # Auto-fix issues
-npm test                 # Tests with coverage
+npm run test            # Tests with coverage
 npm run build           # Production build
 ```
 
@@ -50,27 +50,3 @@ npm run build           # Production build
 - **Integration Readiness**: Clean APIs for data warehouse and dashboard integration
 - **Documentation**: Comprehensive documentation for handoff and future rebuilds
 - **Automated Quality**: TDD-driven development with >90% test coverage enforcement
-
-## Issue Scope Management ⚠️ CRITICAL
-
-### Single Component Rule
-- **One component per issue** (1-2 hours max)
-- **Multi-Component Issues FAIL**: Avoid grouping multiple unrelated components
-- **Scope Validation**: Always verify actual file creation, not just status messages
-
-### Successful Implementation Patterns ✅
-- **Single complex component**: Complete system with comprehensive tests
-- **Related pair**: Component + utility (SearchInput + debounce)
-- **Single system**: Focused business logic with full test coverage
-- **1-2 hours max**: Verifiable file commits, clear scope
-
-### Failed Implementation Patterns ❌
-- **Multiple independent components**: 3+ unrelated UI components in one issue
-- **Status without implementation**: Reported "complete" but no actual files committed
-- **Scope creep**: Issues that expand beyond original requirements
-
-### Issue Size Guidelines
-- ✅ **Optimal**: Single component or tightly related pair
-- ✅ **Acceptable**: Complex single system with clear boundaries
-- ❌ **Too Large**: Multiple independent components
-- ❌ **Warning Signs**: >2 hour implementation time, multiple unrelated components
